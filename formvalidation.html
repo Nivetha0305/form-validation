@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="validate.css">
+    <style>
+        .error {
+            border: 1px solid red;
+        }
+
+        .success {
+            border: 2px solid green;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+
+        .formvalidation {
+            border: none;
+            padding: 40px;
+            border-radius: 15px;
+            width: 320px;
+            height: auto;
+            min-height: 420px;
+            background: linear-gradient(145deg, #fdfbfb, #ebedee);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            
+
+        }
+
+
+
+
+        .circle {
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            overflow: hidden;
+            /* border: 3px solid #0a0a0a; */
+        }
+
+        .circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        ::placeholder {
+            color: rgb(95, 92, 92);
+            font-size: 15px;
+            padding: 8px;
+            /* font-style: oblique; */
+        }
+
+        input {
+            border: 1px solid rgb(16, 15, 15);
+            border-radius: 7px;
+
+        }
+
+        /* label {
+            margin-right: 15px;
+            font-size: 16px;
+            color: rgb(95, 92, 92);
+        } */
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="circle">
+            <img src="validate.jpg">
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="formvalidation">
+            <h1 style="text-align: center;">Registration Form</h1>
+            <form>
+                <!-- <label>name:</label> -->
+                <input type="text" id="nameform" placeholder="Name" style="width: 250px;height: 50px;" />
+                <p id="name1"></p>
+
+                <!-- <label>age:</label> -->
+                <input type="number" id="ageform" placeholder="Age" style="width: 250px;height: 50px;" />
+                <p id="age1"></p>
+
+                <!-- <label>email:</label> -->
+                <input type="email" id="mailform" placeholder="Email" style="width: 250px;height: 50px;" />
+                <p id="mail1"></p>
+
+                <!-- <label>address:</label>
+                <textarea rows="5" cols="20" id="addressform"></textarea>
+                <p id="address1"></p> -->
+
+
+                <!-- <label>phone number:</label> -->
+                <input type="number" id="phoneform" placeholder="mobile-number" style="width: 250px;height: 50px;" />
+                <p id="phone1"></p>
+
+                <!-- <label>password:</label> -->
+                <input type="password" id="passwordform" placeholder="password" style="width: 250px;height: 50px;" />
+                <p id="pass1"></p>
+
+
+                <!-- <label>gender</label><br>
+                <label>
+                    <input type="radio" id="male" name="gender" value="Male"> Male
+                </label>
+
+                <label>
+                    <input type="radio" id="female" name="gender" value="Female"> Female
+                </label> -->
+
+
+
+                <button id="submitid">submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // const name = document.getElementById('nameform').value
+        // console.log("name:", name)
+        // const age = document.getElementById('ageform').value
+        // console.log("age:", age)
+
+        const n = document.getElementById("nameform")
+        const msg = document.getElementById("name1")
+
+        n.addEventListener('input', () => {
+
+
+            const name = n.value.trim();
+            console.log("name:", name)
+
+            if (!name) {
+
+                n.className = "error"
+            }
+            else {
+                const formname = /^[A-Za-z]+$/
+                if (formname.test(name)) {
+                    // document.getElementById('name1').style.display = "none"
+                    n.className = "success"
+                }
+                else {
+
+                    n.className = "error"
+                }
+            }
+        })
+
+        const a = document.getElementById("ageform")
+        const msg1 = document.getElementById("age1")
+        a.addEventListener('input', () => {
+            const age = a.value.trim();
+            console.log("age:", age)
+
+            if (!age) {
+                a.classList.remove("success")
+                a.classList.add("error")
+
+            }
+            else {
+                const formage = /^\d{1,2}$/
+                if (formage.test(age)) {
+                    a.classList.remove("error")
+                    a.classList.add("success")
+
+                }
+                else {
+                    a.classList.remove("success")
+
+                    a.classList.add("error")
+                }
+            }
+        })
+        // const ad = document.getElementById("addressform")
+        // const msg10 = document.getElementById("age1")
+        // ad.addEventListener('input', () => {
+        //     const address = ad.value.trim();
+        //     console.log("address:", address)
+
+        //     if (!address) {
+        //         ad.classList.remove("success")
+        //         ad.classList.add("error")
+
+        //     }
+        //     else {
+        //         const formaddress = /^[A-Za-z\d\s.,'-]{10,100}$/
+        //         if (formaddress.test(address)) {
+        //             ad.classList.remove("error")
+        //             ad.classList.add("success")
+
+        //         }
+        //         else {
+        //             ad.classList.remove("success")
+
+        //             ad.classList.add("error")
+        //         }
+        //     }
+        // })
+        const p = document.getElementById("phoneform")
+        const msg2 = document.getElementById("phone1")
+        p.addEventListener('input', () => {
+            const phone = p.value.trim();
+            console.log("phone:", phone)
+            if (!phone) {
+                p.classList.remove("success")
+                p.classList.add("error")
+            }
+            else {
+                const formphone = /^[6-9]\d{9}$/
+                if (formphone.test(phone)) {
+                    p.classList.remove("error")
+                    p.classList.add("success")
+                }
+                else {
+                    p.classList.remove("success")
+
+                    p.classList.add("error")
+                }
+
+            }
+        })
+        const w = document.getElementById("passwordform")
+        const msg3 = document.getElementById("pass1")
+        w.addEventListener('input', () => {
+            const pass = w.value.trim();
+            console.log("password:", pass)
+            if (!pass) {
+                w.classList.remove("success")
+                w.classList.add("error")
+            }
+            else {
+                const formpassword = /^(?=.*[A-Z])(?=.*\d)(?=.*\W)[A-Za-z\d\W]{8,}$/
+                if (formpassword.test(pass)) {
+                    w.classList.remove("error")
+                    w.classList.add("success")
+                }
+                else {
+                    w.classList.remove("success")
+                    w.classList.add("error")
+                }
+            }
+        })
+
+        const m = document.getElementById("mailform")
+        const msg4 = document.getElementById("mail1")
+        m.addEventListener('input', () => {
+            const mail = m.value.trim();
+            console.log("email:", mail)
+            if (!mail) {
+                m.classList.remove("success")
+                m.classList.add("error")
+            }
+            else {
+                const formemail = /^[a-zA-Z]*\d*@[a-zA-Z]*\.[a-z]+$/
+                if (formemail.test(mail)) {
+                    m.classList.remove("error")
+                    m.classList.add("success")
+                }
+                else {
+                    m.classList.remove("success")
+                    m.classList.add("error")
+                }
+            }
+        })
+
+        document.getElementById('submitid').addEventListener('click', (e) => {
+
+            console.log(e)
+            e.preventDefault()
+            const name = n.value.trim();
+            console.log("name:", name)
+
+            if (!name) {
+
+                n.className = "error"
+            }
+            else {
+                const formname = /^[A-Za-z]+$/
+                if (formname.test(name)) {
+
+                    n.className = "success"
+                }
+                else {
+
+                    n.className = "error"
+
+                }
+            }
+
+            const age = a.value.trim();
+            console.log("age:", age)
+
+            if (!age) {
+                a.classList.remove("success")
+                a.classList.add("error")
+
+            }
+            else {
+                const formage = /^\d{1,2}$/
+                if (formage.test(age)) {
+                    a.classList.remove("error")
+                    a.classList.add("success")
+
+                }
+                else {
+                    a.classList.remove("success")
+
+                    a.classList.add("error")
+                }
+
+            }
+            const mail = m.value.trim();
+            console.log("email:", mail)
+            if (!mail) {
+                m.classList.remove("success")
+                m.classList.add("error")
+            }
+            else {
+                const formemail = /^[a-zA-Z]*\d*@[a-zA-Z]*\.[a-z]+$/
+                if (formemail.test(mail)) {
+                    m.classList.remove("error")
+                    m.classList.add("success")
+                }
+                else {
+                    m.classList.remove("success")
+                    m.classList.add("error")
+                }
+            }
+            // const address = ad.value.trim();
+            // console.log("address:", address)
+
+            // if (!address) {
+            //     ad.classList.remove("success")
+            //     ad.classList.add("error")
+
+            // }
+            // else {
+            //     const formaddress = /^[A-Za-z\d\s.,'-]{10,100}$/
+            //     if (formaddress.test(address)) {
+            //         ad.classList.remove("error")
+            //         ad.classList.add("success")
+
+            //     }
+            //     else {
+            //         ad.classList.remove("success")
+
+            //         ad.classList.add("error")
+            //     }
+            // }
+
+            const phone = p.value.trim();
+            console.log("phone:", phone)
+            if (!phone) {
+                p.classList.remove("success")
+                p.classList.add("error")
+            }
+            else {
+                const formphone = /^[6-9]\d{9}$/
+                if (formphone.test(phone)) {
+                    p.classList.remove("error")
+                    p.classList.add("success")
+                }
+                else {
+                    p.classList.remove("success")
+
+                    p.classList.add("error")
+                }
+
+            }
+            const pass = w.value.trim();
+            console.log("password:", pass)
+            if (!pass) {
+                w.classList.remove("success")
+                w.classList.add("error")
+            }
+            else {
+                const formpassword = /^(?=.*[A-Z])(?=.*\d)(?=.*\W)[A-Za-z\d\W]{8,}$/
+                if (formpassword.test(pass)) {
+                    w.classList.remove("error")
+                    w.classList.add("success")
+                }
+                else {
+                    w.classList.remove("success")
+                    w.classList.add("error")
+                }
+            }
+            // var gender = document.getElementsByName("gender")
+            // let gender_elements = ""
+            // if (gender[0].checked) {
+            //     gender_elements = (gender[0].value)
+            // }
+            // else if (gender[1].checked) {
+            //     gender_elements = (gender[1].value)
+            // }
+            // console.log("gender:", gender_elements)
+
+        })
+
+
+    </script>
+
+
+
+</body>
+
+</html>
