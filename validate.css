@@ -42,7 +42,7 @@ button {
     color: #fff;
     font-size: 16px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 10px;
@@ -61,7 +61,7 @@ input {
 }
 
 .formvalidation h1 {
-    color: #0d47a1;
+    color: #5c7dae;
     /* brighter blue tone */
     letter-spacing: 1px;
     margin-bottom: 20px;
